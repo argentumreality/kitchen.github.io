@@ -93,7 +93,7 @@
     <script>
 function isFacebookApp() {
         var ua = navigator.userAgent || navigator.vendor || window.opera;
-        return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
     } 
     if(isFacebookApp()){
          // fade in notice bar when detect Facebook in-app browser
