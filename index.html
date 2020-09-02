@@ -10,6 +10,21 @@
     ></script>
   </head>
   <body>
+	  <script>
+	var ua = navigator.userAgent || navigator.vendor || window.opera;
+var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
+	if (isInstagram) {
+		// fade in notice bar when detect Facebook in-app browser
+          $('#susu-fb-inapp').fadeIn();
+         // fade out notice bar when user press OK
+          $('#susu-fb-inapp').on('click', function(event) {
+              $('#susu-fb-inapp').fadeOut();   
+          });
+    alert("debugging within the Instagram in-app browser");
+		document.querySelector('model-viewer').style.display = 'none';
+	}
+
+</script>
     <div>
       <style>
         model-viewer {
@@ -90,20 +105,5 @@
       </button>
         </model-viewer>
     </div>
-    <script>
-	var ua = navigator.userAgent || navigator.vendor || window.opera;
-var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
-	if (isInstagram) {
-		// fade in notice bar when detect Facebook in-app browser
-          $('#susu-fb-inapp').fadeIn();
-         // fade out notice bar when user press OK
-          $('#susu-fb-inapp').on('click', function(event) {
-              $('#susu-fb-inapp').fadeOut();   
-          });
-    alert("debugging within the Instagram in-app browser");
-		document.querySelector('model-viewer').style.display = 'none';
-	}
-
-</script>
   </body>
 </html>
