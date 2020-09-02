@@ -55,20 +55,24 @@
           padding: 1em;
           justify-content: center;
         }
-        #notice {
-          position: absolute;
-          background-color: black;
-          border-radius: 12px;
-          font-size: 18;
-          border: none;
-          bottom: 5%;
-          left:15%;
-          align-items: center;
-          font-weight: 800;
-          color: white;
-          padding: 1em;
-          justify-content: center;
-        }
+        .notice-bar {
+    display: none;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 99999;
+}
+.ok-button {
+    padding: 10px; 
+    background: red; 
+    border-radius: 10px;  
+}
       </style>
       <div class="lol">
         <img src="glb/logo.svg">
@@ -77,6 +81,9 @@
       <model-viewer position="0 0 0" src="glb/NEW_KITCHEN.glb" ar ar-modes="webxr scene-viewer quick-look fallback"
       ar-scale="auto" auto-rotate camera-controls alt="model" ios-src="glb/NEW_KITCHEN.usdz">
         
+        <div id="susu-fb-inapp" class="notice-bar">Are you using Facebook in-app Browser? To get better experience, please open the link with Chrome/Safari web browser (see the [...] button on the upper-right?) <br />
+<span class="ok-button">OK, I understand</span></div>
+        
         <button
           slot="ar-button">
           ОТКРЫТЬ ПРОСМОТР AR
@@ -84,10 +91,18 @@
         </model-viewer>
     </div>
     <script>
-      if (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/FBAV/i)) {
-    //iOS Facebook App Browser detected
-        alert('open in safari');
-}
+function isFacebookApp() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+    } 
+    if(isFacebookApp()){
+         // fade in notice bar when detect Facebook in-app browser
+          $('#susu-fb-inapp').fadeIn();
+         // fade out notice bar when user press OK
+          $('#susu-fb-inapp').on('click', function(event) {
+              $('#susu-fb-inapp').fadeOut();   
+          });
+    }
 </script>
   </body>
 </html>
