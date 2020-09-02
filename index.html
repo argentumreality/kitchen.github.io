@@ -96,13 +96,7 @@ function isFacebookApp() {
 var isInstagram = (ua.indexOf('Instagram') > -1) ? true : false;
     } 
     if(isFacebookApp()){
-         // fade in notice bar when detect Facebook in-app browser
-          $('#susu-fb-inapp').fadeIn();
-         // fade out notice bar when user press OK
-          $('#susu-fb-inapp').on('click', function(event) {
-              $('#susu-fb-inapp').fadeOut();   
-          });
-    }
+         alert('TAP');
 </script>
   </body>
 </html>
